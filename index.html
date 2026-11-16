@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f4efe7">
+<meta name="description" content="Complete terrace fitness, six-pack, shoulder, sleep, breakfast and hair-care routine.">
+<link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg">
+<title>Daily Rhythm · Complete Routine</title>
+<style>
+:root{--bg:#f4efe7;--paper:#fbf8f2;--ink:#252522;--muted:#77736b;--line:#d9d1c4;--green:#71856d;--brown:#a78361;--dark:#263029}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 12% 0,#fffaf0 0,transparent 35%),var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:20;background:#f4efe7dd;backdrop-filter:blur(18px);border-bottom:1px solid #d9d1c4aa}
+nav{max-width:1160px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:850;letter-spacing:-.05em}.navlinks{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.navlinks a{color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--paper);padding:7px 11px;border-radius:999px;font-size:12px}
+.wrap{max-width:1160px;margin:auto;padding:22px}.hero{padding:68px 0 38px;display:grid;grid-template-columns:1.35fr .75fr;gap:28px;align-items:end}
+.kicker,.small{font-size:11px;color:var(--muted);letter-spacing:.11em;text-transform:uppercase}.hero h1{font-size:clamp(48px,7.5vw,88px);line-height:.88;letter-spacing:-.075em;margin:10px 0 22px}.lead{font-size:18px;color:var(--muted);max-width:700px}
+.today{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 16px 45px #392f2710}.today strong{display:block;font-size:29px;letter-spacing:-.045em;margin:6px 0}
+.install{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--dark);color:#f7f2e9;border-radius:26px;padding:19px 22px;margin:10px 0 36px}.install button{border:0;border-radius:999px;padding:11px 16px;font-weight:800;cursor:pointer}
+section{margin:30px 0 72px}h2{font-size:32px;letter-spacing:-.05em;margin:4px 0 18px}h3{letter-spacing:-.03em}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card,.day,.meal,.tracker{background:var(--paper);border:1px solid var(--line);border-radius:24px}.card{padding:19px}.card h3{margin:7px 0 5px;font-size:19px}.card p{margin:0;color:var(--muted);font-size:14px}.time{font-size:11px;color:var(--brown);font-weight:850;letter-spacing:.1em}.check{display:flex;gap:8px;align-items:center;margin-top:14px;font-size:13px}.check input{width:17px;height:17px;accent-color:var(--green)}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.routine{display:grid;grid-template-columns:1fr 1fr;gap:13px}.day{padding:21px}.day h3{margin:0 0 12px}.item{display:grid;grid-template-columns:82px 1fr;gap:10px;padding:9px 0;border-top:1px solid #e5ded3}.item:first-of-type{border-top:0}.item b{font-size:11px;color:var(--brown)}
+.breakfast{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.meal{padding:15px}.meal b{display:block;margin-bottom:6px}.meal span{font-size:12px;color:var(--muted)}
+.progress{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.progress .card{min-height:125px}.tag{display:inline-block;margin-top:10px;border:1px solid var(--line);padding:5px 9px;border-radius:999px;font-size:11px;color:var(--muted)}
+.tracker{overflow:auto}.tracker table{border-collapse:collapse;width:100%;min-width:650px}.tracker th,.tracker td{text-align:left;padding:13px;border-bottom:1px solid var(--line);font-size:13px}.tracker th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.note{border-left:3px solid var(--green);padding:15px 18px;background:#71856d0b;border-radius:0 16px 16px 0;color:#5e5b54}.warning{border-left-color:var(--brown)}
+footer{padding:8px 0 60px;color:var(--muted);font-size:12px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid,.timeline{grid-template-columns:1fr 1fr}.breakfast{grid-template-columns:repeat(2,1fr)}.progress{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.wrap{padding:15px}.navlinks{display:none}.hero{padding-top:48px}.grid,.timeline,.routine,.breakfast,.progress{grid-template-columns:1fr}h2{font-size:27px}.install{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><nav><div class="brand">Daily Rhythm</div><div class="navlinks"><a href="#today">Today</a><a href="#workout">Workout</a><a href="#food">Food</a><a href="#hair">Hair</a><a href="#sleep">Sleep</a><a href="#skin">Skin & Nutrition</a><a href="#progress">Progress</a></div></nav></header>
+<main class="wrap">
+<section class="hero" id="today">
+<div><div class="kicker">Complete Terrace Fitness Guide</div><h1>Build the day.<br>Build the body.</h1><p class="lead">Shoulders · Six-Pack · Back · Sleep · Hair Care. A complete home/terrace routine using bodyweight, a backpack and water bottles.</p></div>
+<div class="today"><div class="small">TODAY</div><strong id="todayWorkout">Loading…</strong><div class="small" id="todayHint"></div></div>
+</section>
+
+<div class="install" id="installBox" hidden><div><b>Add Daily Rhythm to your device</b><div style="font-size:12px;color:#c9c3b8">Install it like an app on mobile or desktop.</div></div><button id="installBtn">Add to Home</button></div>
+
+<section>
+<div class="small">01 · DAILY TIMING</div><h2>Your complete day</h2>
+<div class="timeline">
+<div class="card"><div class="time">06:30 AM</div><h3>Wake + water</h3><p>Wake up and drink water.</p><label class="check"><input type="checkbox" data-k="wake"> Done</label></div>
+<div class="card"><div class="time">06:35 AM</div><h3>Outdoor light</h3><p>Outdoor light/sunlight for 10–15 minutes.</p><label class="check"><input type="checkbox" data-k="light"> Done</label></div>
+<div class="card"><div class="time">06:50 AM</div><h3>Mobility</h3><p>5–10 minutes of gentle mobility.</p><label class="check"><input type="checkbox" data-k="mobility"> Done</label></div>
+<div class="card"><div class="time">07:15 AM</div><h3>Breakfast</h3><p>Breakfast containing a protein source.</p><label class="check"><input type="checkbox" data-k="breakfast"> Done</label></div>
+<div class="card"><div class="time">05:30 PM</div><h3>Pre-workout</h3><p>Light pre-workout snack + water.</p><label class="check"><input type="checkbox" data-k="snack"> Done</label></div>
+<div class="card"><div class="time">06:15 PM</div><h3>Warm-up</h3><p>5 min walking, arm circles, hip circles and easy squats.</p><label class="check"><input type="checkbox" data-k="warmup"> Done</label></div>
+<div class="card"><div class="time">06:20–07:00 PM</div><h3>Main workout</h3><p>Follow the day-specific terrace plan.</p><label class="check"><input type="checkbox" data-k="workout"> Done</label></div>
+<div class="card"><div class="time">07:00–07:10 PM</div><h3>Cool down</h3><p>Cool down + hydrate.</p><label class="check"><input type="checkbox" data-k="cooldown"> Done</label></div>
+<div class="card"><div class="time">07:30 PM</div><h3>Dinner</h3><p>Protein + vegetables + carbohydrates.</p><label class="check"><input type="checkbox" data-k="dinner"> Done</label></div>
+<div class="card"><div class="time">10:00 PM</div><h3>Wind down</h3><p>Dim lights, reduce screens and begin winding down.</p><label class="check"><input type="checkbox" data-k="wind"> Done</label></div>
+<div class="card"><div class="time">10:45 PM</div><h3>Sleep target</h3><p>Aim for about 7.5–8 hours consistently.</p><label class="check"><input type="checkbox" data-k="sleep"> Done</label></div>
+</div>
+</section>
+
+<section>
+<div class="small">02 · WEEKLY TRAINING</div><h2>Terrace workout plan</h2>
+<div class="routine">
+<div class="day"><h3>Monday · Shoulders + Abs A</h3><div class="item"><b>3×6–12</b><span>Pike push-ups</span></div><div class="item"><b>3×8–12</b><span>Backpack shoulder press</span></div><div class="item"><b>4×12–20</b><span>Backpack lateral raises</span></div><div class="item"><b>3×12–20</b><span>Backpack reverse fly</span></div><div class="item"><b>3×12–15</b><span>Reverse crunch</span></div><div class="item"><b>3×8–12</b><span>Leg raises</span></div><div class="item"><b>3×30–60s</b><span>Plank</span></div><div class="tag">Rest 60–90 sec between most sets</div></div>
+<div class="day"><h3>Tuesday · Legs + Abs</h3><div class="item"><b>3×12–20</b><span>Bodyweight squats</span></div><div class="item"><b>3×10/leg</b><span>Reverse lunges</span></div><div class="item"><b>3×15–20</b><span>Glute bridges</span></div><div class="item"><b>3×15–25</b><span>Calf raises</span></div><div class="item"><b>3×15/side</b><span>Bicycle crunches</span></div><div class="item"><b>2×30–45s</b><span>Side plank</span></div></div>
+<div class="day"><h3>Wednesday · Recovery + Stretching</h3><div class="item"><b>20–30 min</b><span>Walk</span></div><div class="item"><b>5–10 min</b><span>Gentle mobility/stretching</span></div><div class="item"><b>Focus</b><span>Recovery, hydration and sleep</span></div></div>
+<div class="day"><h3>Thursday · Shoulders + Abs B</h3><div class="item"><b>4×6–12</b><span>Pike push-ups</span></div><div class="item"><b>4×12–20</b><span>Backpack lateral raises</span></div><div class="item"><b>2×10–15</b><span>Backpack front raises</span></div><div class="item"><b>3×12–20</b><span>Backpack reverse fly</span></div><div class="item"><b>3×20–30/side</b><span>Mountain climbers</span></div><div class="item"><b>3×10–12/side</b><span>Dead bug</span></div><div class="item"><b>3×12–15</b><span>Reverse crunch</span></div></div>
+<div class="day"><h3>Friday · Full Body + Abs</h3><div class="item"><b>3×8–15</b><span>Push-ups</span></div><div class="item"><b>3×10–15</b><span>Backpack rows</span></div><div class="item"><b>3×15–20</b><span>Squats</span></div><div class="item"><b>3×8–12</b><span>Backpack shoulder press</span></div><div class="item"><b>3×8–12</b><span>Leg raises</span></div><div class="item"><b>3×30–60s</b><span>Plank</span></div></div>
+<div class="day"><h3>Saturday · Optional Light Stretching</h3><div class="item"><b>20–30 min</b><span>Easy walk</span></div><div class="item"><b>5–10 min</b><span>Light stretching</span></div></div>
+<div class="day"><h3>Sunday · Full Rest</h3><div class="item"><b>Optional</b><span>Easy walk if desired</span></div><div class="item"><b>Priority</b><span>Recovery</span></div></div>
+</div>
+</section>
+
+<section>
+<div class="small">03 · PROGRESSION</div><h2>How to keep improving</h2>
+<div class="grid">
+<div class="card"><h3>Rep range</h3><p>When you reach the top of the rep range with clean form on every set, add a small amount of backpack weight or use a harder variation.</p></div>
+<div class="card"><h3>1–3 reps in reserve</h3><p>Keep about 1–3 good repetitions in reserve. Do not sacrifice technique to chase numbers.</p></div>
+<div class="card"><h3>Push-up path</h3><p>Regular → harder variation → backpack push-up.</p></div>
+<div class="card"><h3>Squat path</h3><p>Bodyweight → slow squat → backpack squat → split squat.</p></div>
+<div class="card"><h3>Shoulder path</h3><p>Light bottle/backpack → more repetitions → slightly more resistance.</p></div>
+<div class="card"><h3>Back path</h3><p>Add books or water bottles to the backpack gradually.</p></div>
+</div>
+</section>
+
+<section id="food">
+<div class="small">04 · FOOD</div><h2>Breakfast + food framework</h2>
+<div class="breakfast">
+<div class="meal"><b>Monday</b><span>3 eggs + 2 idli + banana + milk</span></div><div class="meal"><b>Tuesday</b><span>Oats + milk + banana + peanuts + 2 eggs</span></div><div class="meal"><b>Wednesday</b><span>2 dosa + 2–3 eggs + fruit</span></div><div class="meal"><b>Thursday</b><span>Oats + curd + banana + peanuts</span></div><div class="meal"><b>Friday</b><span>2 egg sandwiches + banana + milk</span></div><div class="meal"><b>Saturday</b><span>2–3 idli + sambar + 2 eggs + fruit</span></div><div class="meal"><b>Sunday</b><span>2 dosa + sambar + 2 eggs + banana</span></div>
+</div>
+<div class="grid" style="margin-top:13px">
+<div class="card"><h3>Breakfast</h3><p>Eggs/curd/milk + dosa/idli/oats + fruit.</p></div>
+<div class="card"><h3>Lunch</h3><p>Rice/roti + dal/chicken/eggs or another protein + vegetables.</p></div>
+<div class="card"><h3>Pre-workout</h3><p>Banana + curd/milk or another light protein/carb snack.</p></div>
+<div class="card"><h3>Dinner</h3><p>Rice/roti + protein + vegetables.</p></div>
+<div class="card"><h3>Hydration</h3><p>Drink regularly through the day; increase fluids around exercise and hot weather.</p></div>
+<div class="card"><h3>Don't crash diet</h3><p>Do not severely restrict calories while trying to build muscle and support healthy hair.</p></div>
+</div>
+</section>
+
+<section id="sleep">
+<div class="small">05 · SLEEP</div><h2>Sleep routine</h2>
+<div class="grid">
+<div class="card"><div class="time">10:00 PM</div><h3>Wind down</h3><p>Dim lights, reduce screens and finish demanding work.</p></div>
+<div class="card"><div class="time">10:45 PM</div><h3>Target bedtime</h3><p>10:45 PM is a target, not a deadline.</p></div>
+<div class="card"><div class="time">06:30 AM</div><h3>Keep wake time steady</h3><p>Keep the wake time around 6:30 AM.</p></div>
+</div>
+<div class="note" style="margin-top:14px"><b>If sleep doesn't come:</b> if you're awake for roughly 20–30 minutes, get out of bed, keep lights dim, and do something quiet such as reading. Return when sleepy. Avoid scrolling, gaming, work or bright light. Shift bedtime earlier gradually rather than forcing a sudden change. Priority: about 7.5–8 hours consistently.</div>
+</section>
+
+<section id="hair">
+<div class="small">06 · HAIR GROWTH + CARE</div><h2>Simple hair routine</h2>
+<div class="grid">
+<div class="card"><h3>Wash</h3><p>Wash according to how oily/dirty your scalp gets. Apply shampoo mainly to the scalp rather than aggressively scrubbing hair lengths.</p></div>
+<div class="card"><h3>Condition</h3><p>Use conditioner after washing.</p></div>
+<div class="card"><h3>Gentle handling</h3><p>Handle wet hair gently. Avoid aggressive towel rubbing and tugging.</p></div>
+<div class="card"><h3>Heat</h3><p>Limit excessive heat from dryers/straighteners.</p></div>
+<div class="card"><h3>Tension</h3><p>Avoid hairstyles that repeatedly pull tightly on the hair.</p></div>
+<div class="card"><h3>Supplements</h3><p>Avoid random high-dose hair supplements. Too much of some nutrients can worsen hair loss.</p></div>
+<div class="card"><h3>Nutrition</h3><p>Avoid crash dieting and inadequate calorie/protein intake.</p></div>
+<div class="card"><h3>When to get checked</h3><p>If thinning, bald patches, receding hairline or heavy shedding persists, see a dermatologist to identify the cause.</p></div>
+</div>
+<div class="note" style="margin-top:14px"><b>Simple daily care:</b> Morning gentle styling only; after sweating, wash/rinse as appropriate for your scalp; wash days use gentle shampoo + conditioner; after washing gently squeeze/wrap hair dry; at night keep hair loose and avoid tight styles.</div>
+</section>
+
+<section>
+<div class="small">07 · SIX-PACK STRATEGY</div><h2>Abs + body composition</h2>
+<div class="grid">
+<div class="card"><h3>Build the muscle</h3><p>Ab exercises strengthen and build the abdominal muscles.</p></div>
+<div class="card"><h3>Visibility</h3><p>Visible abs also depend on overall body-fat level, genetics, nutrition and consistency.</p></div>
+<div class="card"><h3>Frequency</h3><p>Train abs 3–4 times per week.</p></div>
+<div class="card"><h3>Steps</h3><p>Aim for roughly 7,000–10,000 steps per day when practical.</p></div>
+<div class="card"><h3>Food quality</h3><p>Keep protein in main meals. Avoid relying on sugary drinks, frequent fried foods and constant snacking.</p></div>
+<div class="card"><h3>Carbs are allowed</h3><p>Do not eliminate rice or carbohydrates just to lose belly fat.</p></div>
+</div>
+</section>
+
+<section>
+<div class="small">08 · MORNING MOBILITY</div><h2>5–10 minute mobility</h2>
+<div class="grid">
+<div class="card"><h3>Neck</h3><p>Gentle turns, 5 each side.</p></div><div class="card"><h3>Shoulders</h3><p>Shoulder circles, 10 forward + 10 backward.</p></div><div class="card"><h3>Arms</h3><p>Arm circles, 10 each direction.</p></div><div class="card"><h3>Torso</h3><p>Torso rotations, 10 each side.</p></div><div class="card"><h3>Hips</h3><p>Hip circles, 10 each direction.</p></div><div class="card"><h3>Legs + ankles</h3><p>Leg swings, ankle circles and 10 easy squats.</p></div>
+</div>
+</section>
+
+<section>
+<div class="small">09 · DAILY CHECKLIST</div><h2>Tick it off</h2>
+<div class="grid">
+<div class="card"><label class="check"><input type="checkbox" data-k="check-light"> Morning outdoor light</label></div>
+<div class="card"><label class="check"><input type="checkbox" data-k="check-mob"> Morning mobility/walk</label></div>
+<div class="card"><label class="check"><input type="checkbox" data-k="check-protein"> Protein-containing meals</label></div>
+<div class="card"><label class="check"><input type="checkbox" data-k="check-workout"> Workout if scheduled</label></div>
+<div class="card"><label class="check"><input type="checkbox" data-k="check-steps"> Walking target</label></div>
+<div class="card"><label class="check"><input type="checkbox" data-k="check-water"> Adequate water</label></div>
+<div class="card"><label class="check"><input type="checkbox" data-k="check-hair"> Gentle hair care</label></div>
+<div class="card"><label class="check"><input type="checkbox" data-k="check-wind"> 10 PM wind-down</label></div>
+<div class="card"><label class="check"><input type="checkbox" data-k="check-bed"> 10:45 PM target bedtime</label></div>
+</div>
+</section>
+
+<section id="skin">
+<div class="small">10 · SKIN + NUTRITION HABITS</div>
+<h2>Fresh skin, better fuel</h2>
+<p class="note">Wellness habits inspired by the routine you provided. Individual responses vary, so these are habits to try rather than guaranteed skin treatments.</p>
+<div class="grid" style="margin-top:14px">
+<div class="card"><div class="time">01 · MORNING</div><h3>💧 Water before coffee</h3><p>Hydrate first thing in the morning before coffee.</p><label class="check"><input type="checkbox" data-k="water-before-coffee"> Done</label></div>
+<div class="card"><div class="time">02 · DAILY</div><h3>🐟 Omega-3 foods</h3><p>Include omega-3-rich foods such as salmon or chia seeds. Supplements are optional.</p><label class="check"><input type="checkbox" data-k="omega3"> Done</label></div>
+<div class="card"><div class="time">03 · DAILY</div><h3>🥑 Real fats</h3><p>Include avocado, olive oil and nuts as part of a balanced diet.</p><label class="check"><input type="checkbox" data-k="healthy-fats"> Done</label></div>
+<div class="card"><div class="time">04 · DAILY</div><h3>🍬 Less added sugar</h3><p>Cut back on sugary drinks and frequent high-sugar foods.</p><label class="check"><input type="checkbox" data-k="less-sugar"> Done</label></div>
+<div class="card"><div class="time">05 · BREAKFAST</div><h3>🍳 Protein + healthy fat</h3><p>Start the day with a protein source plus a healthy-fat food.</p><label class="check"><input type="checkbox" data-k="protein-fat-breakfast"> Done</label></div>
+<div class="card"><div class="time">06 · DAILY</div><h3>🌱 Zinc-rich foods</h3><p>Rotate pumpkin seeds, lentils and other zinc-containing foods.</p><label class="check"><input type="checkbox" data-k="zinc-foods"> Done</label></div>
+<div class="card"><div class="time">07 · FOOD CHOICE</div><h3>🌾 Gluten awareness</h3><p>The source describes reducing gluten as a personal experience. Don't automatically restrict it without a reason.</p><label class="check"><input type="checkbox" data-k="gluten-awareness"> Done</label></div>
+<div class="card"><div class="time">08 · DRINKS</div><h3>🍵 Green tea</h3><p>Choose water or unsweetened green tea more often instead of sugary drinks.</p><label class="check"><input type="checkbox" data-k="green-tea"> Done</label></div>
+<div class="card"><div class="time">09 · FOOD</div><h3>🦠 Probiotic foods</h3><p>Consider curd/yogurt or other probiotic-containing foods if they suit you.</p><label class="check"><input type="checkbox" data-k="probiotic"> Done</label></div>
+<div class="card"><div class="time">10 · OPTIONAL</div><h3>🥤 Collagen smoothie</h3><p>Optional collagen powder in a smoothie. It is not required or a guaranteed skin treatment.</p><label class="check"><input type="checkbox" data-k="collagen"> Done</label></div>
+<div class="card"><div class="time">11 · DAILY</div><h3>🍹 Fresh juice</h3><p>One fresh, unsweetened juice if you enjoy it. Keep whole fruit in your routine too for fiber.</p><label class="check"><input type="checkbox" data-k="fresh-juice"> Done</label></div>
+<div class="card"><div class="time">12 · BASE</div><h3>🥗 Whole-food meals</h3><p>Build most meals around protein, vegetables/fruit, whole-food carbohydrates and healthy fats.</p><label class="check"><input type="checkbox" data-k="whole-foods"> Done</label></div>
+</div>
+<div class="day" style="margin-top:14px"><h3>🍹 Fresh Juice Rotation</h3>
+<div class="item"><b>Mon</b><span>Orange / mosambi juice, unsweetened</span></div>
+<div class="item"><b>Tue</b><span>Watermelon juice, unsweetened</span></div>
+<div class="item"><b>Wed</b><span>Carrot + orange juice</span></div>
+<div class="item"><b>Thu</b><span>Pomegranate juice, unsweetened</span></div>
+<div class="item"><b>Fri</b><span>Pineapple + mint juice, unsweetened</span></div>
+<div class="item"><b>Sat</b><span>Guava juice, preferably blended rather than strained</span></div>
+<div class="item"><b>Sun</b><span>Fresh seasonal fruit juice, unsweetened</span></div>
+<div class="tag">Keep the serving moderate. Whole fruit remains the better everyday default for fiber.</div>
+</div>
+</section>
+<section id="progress">
+<div class="small">11 · 12-WEEK TRACKER</div><h2>Progress without guessing</h2>
+<div class="tracker"><table><thead><tr><th>Week</th><th>Workouts</th><th>Walking</th><th>Sleep</th><th>Notes</th></tr></thead><tbody id="trackerBody"></tbody></table></div>
+</section>
+
+<section>
+<div class="small">12 · SAFETY</div><h2>Terrace + training safety</h2>
+<div class="note warning"><ul>
+<li>Exercise well away from the terrace edge.</li><li>Use only stable surfaces for support.</li><li>Do not use an unstable chair/table for exercises.</li><li>Warm up before hard sets.</li><li>Stop for sharp pain, dizziness, faintness or unusual breathing difficulty.</li>
+<li>If you have persistent or significant hair loss, seek medical evaluation rather than relying only on home remedies.</li>
+</ul></div>
+</section>
+
+<section>
+<div class="small">13 · HAIR CARE NOTE</div><h2>Evidence note</h2>
+<p class="note">The hair-care section follows the guidance included in the source guide: wash based on scalp needs, use conditioner, handle hair gently, limit excessive heat, avoid damaging tension, maintain adequate nutrition, and seek dermatologic evaluation when hair loss is concerning.</p>
+</section>
+<footer>Daily Rhythm · Complete personal routine dashboard · Built from the supplied Complete Terrace Fitness Guide.</footer>
+</main>
+<script>
+const names=["Full Rest","Shoulders + Abs A","Legs + Abs","Recovery + Stretching","Shoulders + Abs B","Full Body + Abs","Optional Light Stretching"];
+const d=new Date(),day=d.getDay();document.getElementById("todayWorkout").textContent=names[day];document.getElementById("todayHint").textContent=day===0?"Easy walk if desired · full rest in the evening":"Main session starts at 6:20 PM after the 6:15 PM warm-up";
+const today=d.toISOString().slice(0,10);
+document.querySelectorAll('input[type="checkbox"]').forEach(x=>{const k="daily-rhythm-"+today+"-"+x.dataset.k;x.checked=localStorage.getItem(k)==="1";x.addEventListener("change",()=>localStorage.setItem(k,x.checked?"1":"0"))});
+const body=document.getElementById("trackerBody");
+for(let i=1;i<=12;i++){const tr=document.createElement("tr");tr.innerHTML=`<td>Week ${i}</td><td><input aria-label="Week ${i} workouts" placeholder="e.g. 4/4"></td><td><input aria-label="Week ${i} walking" placeholder="steps"></td><td><input aria-label="Week ${i} sleep" placeholder="hours"></td><td><input aria-label="Week ${i} notes" placeholder="notes"></td>`;body.appendChild(tr)}
+let deferred;addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;document.getElementById("installBox").hidden=false});
+document.getElementById("installBtn").onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;document.getElementById("installBox").hidden=true};
+if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js");
+</script>
+</body></html>

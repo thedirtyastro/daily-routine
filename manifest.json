@@ -1,0 +1,15 @@
+{
+  "name": "Daily Rhythm \u00b7 Complete Routine + Skin",
+  "short_name": "Daily Rhythm",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f4efe7",
+  "theme_color": "#f4efe7",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
